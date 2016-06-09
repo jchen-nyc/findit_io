@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Recipient #<%= @recipient.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Item</dt>
+      <dd><%= @recipient.item_id %></dd>
+
+      <dt>Phone number</dt>
+      <dd><%= @recipient.phone_number %></dd>
+
+      <dt>Recipient name</dt>
+      <dd><%= @recipient.recipient_name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/recipients" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/recipients/<%= @recipient.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_recipient/<%= @recipient.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

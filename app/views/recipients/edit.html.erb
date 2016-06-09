@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @recipient.errors.any? %>
+  <% @recipient.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Recipient #<%= @recipient.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_recipient/<%= @recipient.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for item_id -->
+      <div class="form-group">
+        <label for="item_id" class="control-label">
+          Item
+        </label>
+
+        <input type="text" id="item_id" name="item_id" placeholder="Item" class="form-control" value="<%= @recipient.item_id %>">
+      </div>
+
+      <!-- Label and input for phone_number -->
+      <div class="form-group">
+        <label for="phone_number" class="control-label">
+          Phone number
+        </label>
+
+        <input type="text" id="phone_number" name="phone_number" placeholder="Phone number" class="form-control" value="<%= @recipient.phone_number %>">
+      </div>
+
+      <!-- Label and input for recipient_name -->
+      <div class="form-group">
+        <label for="recipient_name" class="control-label">
+          Recipient name
+        </label>
+
+        <input type="text" id="recipient_name" name="recipient_name" placeholder="Recipient name" class="form-control" value="<%= @recipient.recipient_name %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Recipient
+      </button>
+      or
+      <a href="/recipients/<%= @recipient.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
