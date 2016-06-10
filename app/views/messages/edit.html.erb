@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Message #<%= @message.id %></h3>
+  <h3>Resend Message #<%= @message.id %></h3>
 </div>
 
 <div class="row">
@@ -20,30 +20,25 @@
 
       <!-- Label and input for item_id -->
       <div class="form-group">
+        <img width=500px class="img-responsive" src="<%= @message.item.image %>">
         <label for="item_id" class="control-label">
           Item
         </label>
-
-        <input type="text" id="item_id" name="item_id" placeholder="Item" class="form-control" value="<%= @message.item_id %>">
+        <input type="text" id="item_name" name="item_name" placeholder="Item Name" class="form-control" value="<%= @message.item.item_name %>" readonly>
+        <input type="hidden" id="item_id" name="item_id" placeholder="Item" class="form-control" value="<%= @message.item_id %>">
       </div>
 
-      <!-- Label and input for recipient_id -->
+      <!-- Hidden label and input for recipient_id -->
       <div class="form-group">
-        <label for="recipient_id" class="control-label">
+        <label for="item_id" class="control-label">
           Recipient
         </label>
-
-        <input type="text" id="recipient_id" name="recipient_id" placeholder="Recipient" class="form-control" value="<%= @message.recipient_id %>">
+        <input type="hidden" id="recipient_id" name="recipient_id" placeholder="Recipient" class="form-control" value="<%= @message.recipient_id %>" readonly>
+        <input type="text" id="recipient_name" name="recipient_name" placeholder="Recipient" class="form-control" value="<%= @message.recipient.recipient_name %>" readonly>
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @message.user_id %>">
-      </div>
+      <!-- Hidden label and input for user_id -->
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @message.user_id %>">
 
       <!-- Label and input for message -->
       <div class="form-group">
@@ -51,11 +46,11 @@
           Message
         </label>
 
-        <input type="text" id="message" name="message" placeholder="Message" class="form-control" value="<%= @message.message %>">
+        <input type="text" id="message" name="message" placeholder="Message" class="form-control" value="<%= @message.message %>" readonly>
       </div>
 
       <button class="btn btn-warning">
-        Update Message
+        Click to Resend Message
       </button>
       or
       <a href="/messages/<%= @message.id %>">Cancel</a>
