@@ -21,7 +21,7 @@
       <!-- Label and input for item_id -->
       <div class="form-group">
         <label for="item_id" class="control-label">
-          Item
+          <%= @message.item_id %>
         </label>
 
         <input type="text" id="item_id" name="item_id" placeholder="Item" class="form-control" value="<%= @message.item_id %>">
@@ -42,7 +42,7 @@
           User
         </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @message.user_id %>">
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <!-- Label and input for message -->

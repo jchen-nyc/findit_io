@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
-    Messages
-    <a href="/messages/new" class="btn btn-lg btn-success">New Message</a>
+    List of messages sent
+    <!-- <a href="/messages/new" class="btn btn-lg btn-success">New Message</a> -->
   </h1>
 </div>
 
@@ -11,20 +11,20 @@
       <tr>
         <th>Item</th>
         <th>Recipient</th>
-        <th>User</th>
+        <!-- <th>User</th> -->
         <th>Message</th>
         <th>Actions</th>
       </tr>
 
       <% @messages.each do |message| %>
       <tr>
-        <td><%= message.item_id %></td>
-        <td><%= message.recipient_id %></td>
-        <td><%= message.user_id %></td>
+        <td><%= message.item.item_name %></td>
+        <td><%= message.recipient.recipient_name %></td>
+        <!-- <td><%= current_user.id %></td> -->
         <td><%= message.message %></td>
         <td>
           <a href="/messages/<%= message.id %>" class="btn btn-primary">Show</a>
-          <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">Resend</a>
           <a href="/delete_message/<%= message.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>

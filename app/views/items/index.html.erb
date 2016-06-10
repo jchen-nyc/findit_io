@@ -1,8 +1,28 @@
 <div class="page-header">
   <h1>
     Items
-    <a href="/items/new" class="btn btn-lg btn-success">New Item</a>
+    <a href="/items/new" class="btn btn-lg btn-success"><i class="fa fa-plus-square fa-6" aria-hidden="true"></i></a>
   </h1>
+</div>
+
+<div>
+<%= search_form_for @q do |f| %>
+  <p class="lead">Narrow results:</p>
+
+  <div class="form-group">
+    <%= f.label :item_name_cont, "Item Name containing" %>
+    <%= f.text_field :item_name_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :location_cont, "Location" %>
+    <%= f.text_field :location_cont, :class => "form-control", :placeholder => "Search for all the things in this location" %>
+  </div>
+
+  <%= f.submit :class => "btn btn-info btn-block" %>
+
+  <a href="/items" class="btn btn-success btn-block">Clear filters</a>
+<% end %>
 </div>
 
 <div class="row">
@@ -19,7 +39,7 @@
       <% @items.each do |item| %>
       <tr>
         <!-- <td><%= item.user_id %></td> -->
-        <td><img width=100px src="<%= item.image %>"></td>
+        <td><img width=100px class="img-responsive" src="<%= item.image %>"></td>
         <td><%= item.location %></td>
         <td><%= item.item_name %></td>
         <td>

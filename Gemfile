@@ -4,7 +4,9 @@ gem "starter_generators", :git => "http://github.com/raghubetina/starter_generat
 
 gem 'devise', '~> 3.5.9'
 
-gem "faker"
+gem 'ransack'
+
+gem 'carrierwave'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

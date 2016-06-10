@@ -30,10 +30,33 @@
         Delete
       </a>
     </div>
-    <div padding=5px class="btn-group btn-group-justified">
-      <a href="/messages/new/<%= @item.id %>" class="btn btn-warning" rel="nofollow">
-        Share
-      </a>
-    </div>
+
+    <li class="list-group-item list-group-item-success">
+      Share this item
+    </li>
+    <li class="list-group-item">
+      <form action="/create_message" method="post">
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+        <input name="item_id" type="hidden" value="<%= @item.id %>">
+        <div class="form-group">
+          <label for="recipient_id" class="control-label">
+            Recipient
+          </label>
+          <%= select_tag(:recipient_id, options_from_collection_for_select(Recipient.all, :id, :recipient_name), :class => "form-control") %>
+          <p class="help-block">
+            <a href="/recipients/new">or add a new recipient</a>
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="message" class="control-label">
+            Message
+          </label>
+          <input type="text" id="message" name="message" placeholder="Message" class="form-control">
+        </div>
+        <button class="btn btn-success">
+          Send Message
+        </button>
+      </form>
+    </li>
   </div>
 </div>
