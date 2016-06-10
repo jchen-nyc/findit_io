@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
   def index
-    @messages = Message.all
+    @q = Message.ransack(params[:q])
+    @messages = @q.result(:distinct => true).includes(:recipient, :item)
+    # @messages = Message.all
   end
 
   def show
@@ -26,13 +28,13 @@ class MessagesController < ApplicationController
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
-    @twilio_client.account.sms.messages.create(
-      :from => "+1#{twilio_phone_number}",
-      :to => number_to_send_to,
-      :body => "From #{current_user.email}:
-#{@message.message}
-Locaton: #{@message.item.location}",
-      :media_url => "#{@message.item.image}"
+    @twilio_client.account.messages.create(
+    :from => "+1#{twilio_phone_number}",
+    :to => number_to_send_to,
+    :body => "From #{current_user.email}:
+    #{@message.message}
+    Locaton: #{@message.item.location}",
+    # :media_url => "http://localhost:3000#{@message.item.image}"
     )
 
     if @message.save
@@ -64,12 +66,12 @@ Locaton: #{@message.item.location}",
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
     @twilio_client.account.sms.messages.create(
-      :from => "+1#{twilio_phone_number}",
-      :to => number_to_send_to,
-      :body => "From #{current_user.email}:
-#{@message.message}
-Locaton: #{@message.item.location}",
-      :media_url => "#{@message.item.image}"
+    :from => "+1#{twilio_phone_number}",
+    :to => number_to_send_to,
+    :body => "From #{current_user.email}:
+    #{@message.message}
+    Locaton: #{@message.item.location}",
+    :media_url => "#{@message.item.image}"
     )
 
     if @message.save
