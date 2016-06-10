@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
     @message.message = params[:message]
 
     if @message.save
-      redirect_to "/messages", :notice => "Message created successfully."
+      redirect_to "/messages", :notice => "Message sent successfully."
     else
       render 'new'
     end
