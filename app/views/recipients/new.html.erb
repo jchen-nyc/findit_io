@@ -21,22 +21,22 @@
       <!-- Label and input for item_id -->
         <input type="hidden" id="item_id" name="item_id" placeholder="Item" class="form-control" value="<%= @recipient.item_id %>">
 
+        <!-- Label and input for recipient_name -->
+        <div class="form-group">
+          <label for="recipient_name" class="control-label">
+            Recipient name
+          </label>
+
+          <input type="text" id="recipient_name" name="recipient_name" placeholder="Recipient name" class="form-control" value="<%= @recipient.recipient_name %>">
+        </div>
+
       <!-- Label and input for phone_number -->
       <div class="form-group">
         <label for="phone_number" class="control-label">
-          Phone number
+          Phone number (the phone number must be 10 digits)
         </label>
 
-        <input type="text" id="phone_number" name="phone_number" placeholder="Phone number" class="form-control" value="<%= @recipient.phone_number %>">
-      </div>
-
-      <!-- Label and input for recipient_name -->
-      <div class="form-group">
-        <label for="recipient_name" class="control-label">
-          Recipient name
-        </label>
-
-        <input type="text" id="recipient_name" name="recipient_name" placeholder="Recipient name" class="form-control" value="<%= @recipient.recipient_name %>">
+        <input type="text" id="phone_number" name="phone_number" placeholder="Phone number (xxxxxxxxxx)" class="form-control" value="<%= @recipient.phone_number %>">
       </div>
 
       <button class="btn btn-success">

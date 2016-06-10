@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @item.errors.any? %>
-  <% @item.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @item.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -19,7 +19,16 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Hidden label and input for user_id -->
-        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+      <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+
+      <!-- Label and input for item_name -->
+      <div class="form-group">
+        <label for="item_name" class="control-label">
+          Item name
+        </label>
+
+        <input type="text" id="item_name" name="item_name" placeholder="Item name" class="form-control" value="<%= @item.item_name %>">
+      </div>
 
       <!-- Label and input for image -->
       <div class="form-group">
@@ -37,15 +46,6 @@
         </label>
 
         <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @item.location %>">
-      </div>
-
-      <!-- Label and input for item_name -->
-      <div class="form-group">
-        <label for="item_name" class="control-label">
-          Item name
-        </label>
-
-        <input type="text" id="item_name" name="item_name" placeholder="Item name" class="form-control" value="<%= @item.item_name %>">
       </div>
 
       <button class="btn btn-success">

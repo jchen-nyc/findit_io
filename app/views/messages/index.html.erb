@@ -9,7 +9,7 @@
   <p class="lead">Filter results:</p>
 
 <div class="form-group">
-  <%= f.label :recipient_recipient_name_cont %>
+  <%= f.label :recipient_recipient_name_cont, "Recipient Name containing" %>
   <%= f.text_field :recipient_recipient_name_cont, :class => "form-control" %>
 </div>
 
@@ -34,6 +34,7 @@
       <tr>
         <th>Recipient</th>
         <th>Item</th>
+        <th>Image</th>
         <!-- <th>User</th> -->
         <th>Message</th>
         <th>Actions</th>
@@ -43,8 +44,9 @@
       <tr>
         <td><%= message.recipient.recipient_name %></td>
         <td><%= message.item.item_name %></td>
+        <td><img width="100px" class="img-responsive" src="<%= message.item.image %>"></td>
         <!-- <td><%= current_user.id %></td> -->
-        <td><%= message.message %></td>
+        <td><%= message.message.truncate(90) %></td>
         <td>
           <a href="/messages/<%= message.id %>" class="btn btn-primary">Show</a>
           <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">Resend</a>

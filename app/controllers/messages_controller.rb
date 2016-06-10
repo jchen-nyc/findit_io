@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
     :body => "From #{current_user.email}:
     #{@message.message}
     Locaton: #{@message.item.location}",
-    # :media_url => "http://localhost:3000#{@message.item.image}"
+    :media_url => "#{@message.item.image}"
     )
 
     if @message.save
@@ -65,7 +65,7 @@ class MessagesController < ApplicationController
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
-    @twilio_client.account.sms.messages.create(
+    @twilio_client.account.messages.create(
     :from => "+1#{twilio_phone_number}",
     :to => number_to_send_to,
     :body => "From #{current_user.email}:

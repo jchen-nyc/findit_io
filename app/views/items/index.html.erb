@@ -31,8 +31,8 @@
       <tr>
         <!-- <th>User</th> -->
         <th>Image</th>
-        <th>Location</th>
         <th>Item name</th>
+        <th>Location</th>
         <th>Actions</th>
       </tr>
 
@@ -40,8 +40,8 @@
       <tr>
         <!-- <td><%= item.user_id %></td> -->
         <td><img width=100px class="img-responsive" src="<%= item.image %>"></td>
-        <td><%= item.location %></td>
         <td><%= item.item_name %></td>
+        <td><%= item.location %></td>
         <td>
           <a href="/items/<%= item.id %>" class="btn btn-primary">Show</a>
           <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a>
