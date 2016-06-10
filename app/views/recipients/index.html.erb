@@ -10,16 +10,16 @@
     <table class="table table-striped table-hover">
       <tr>
         <!-- <th>Item</th> -->
-        <th>Phone number</th>
         <th>Recipient name</th>
+        <th>Phone number</th>
         <th>Actions</th>
       </tr>
 
       <% @recipients.each do |recipient| %>
       <tr>
         <!-- <td><%= recipient.item_id %></td> -->
-        <td><%= recipient.phone_number %></td>
         <td><%= recipient.recipient_name %></td>
+        <td><%= recipient.phone_number %></td>
         <td>
           <a href="/recipients/<%= recipient.id %>" class="btn btn-primary">Show</a>
           <a href="/recipients/<%= recipient.id %>/edit" class="btn btn-warning">Edit</a>

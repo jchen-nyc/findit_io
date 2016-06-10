@@ -18,11 +18,29 @@ class MessagesController < ApplicationController
     @message.user_id = params[:user_id]
     @message.message = params[:message]
 
+    number_to_send_to = @message.recipient.phone_number
+
+    twilio_sid = "ACb3e9823198eff9d9f21e2bc283e212c5"
+    twilio_token = "9ca6ba7302212af7d9e6ac575d77a8ce"
+    twilio_phone_number = "16072164346"
+
+    @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+
+    @twilio_client.account.sms.messages.create(
+      :from => "+1#{twilio_phone_number}",
+      :to => number_to_send_to,
+      :body => "From #{current_user.email}:
+#{@message.message}
+Locaton: #{@message.item.location}",
+      :media_url => "#{@message.item.image}"
+    )
+
     if @message.save
       redirect_to "/messages", :notice => "Message sent successfully."
     else
       render 'new'
     end
+
   end
 
   def edit
@@ -38,7 +56,7 @@ class MessagesController < ApplicationController
     @message.message = params[:message]
 
     if @message.save
-      redirect_to "/messages", :notice => "Message updated successfully."
+      redirect_to "/messages", :notice => "Message sent successfully."
     else
       render 'edit'
     end
