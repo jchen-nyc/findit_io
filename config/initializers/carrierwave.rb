@@ -12,9 +12,9 @@ CarrierWave.configure do |config|
 
     # Configuration for Amazon S3
     :provider              => 'AWS',
-    :aws_access_key_id     => "AKIAIKMPOIJ7CCEQR3VQ",
-    :aws_secret_access_key => "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",
-    :region                => 'us-east-1'
+    :aws_access_key_id     => ENV["S3_KEY"],
+    :aws_secret_access_key => ENV["SECRET_KEY"],
+    :region                => ENV["REGION"]
   }
 
   config.fog_use_ssl_for_aws = false
